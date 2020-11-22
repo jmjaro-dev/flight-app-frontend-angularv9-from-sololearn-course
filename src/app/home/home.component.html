@@ -1,0 +1,51 @@
+<div class="outer_container">
+  <div class="big_container">
+    <div class="top_bar">
+      <span>Find Flights</span>
+    </div>
+
+    <div class="transparent_bg">
+      <div class="container">
+        <div class="search_pane"> 
+          <div class="search_box">
+            <label for="origin">Origin</label>
+            <select [(ngModel)]="selectedOrigin" name="origin">
+              <option value="" disabled selected>from</option>
+              <option *ngFor="let result of originList; let i=index" value={{result.origin}}>{{result.origin}}</option>
+            </select>
+          </div>
+          <div class="search_box">
+            <label for="destination">Destination</label>
+            <select [(ngModel)]="selectedDestination" name="destination">
+              <option value="" disabled selected>to</option>
+              <option *ngFor="let result of destinationList; let i=index" value={{result.destination}}>{{result.destination}}</option>
+            </select>
+          </div>
+          <div class="search_box">
+            <button (click)="query()">Go</button>
+          </div>
+        </div>
+        <div class="flight_pane">  
+          <div *ngIf="flights.length > 0">
+            <div class="flight_headers">
+              <div class="flight_number cell"> Flight # </div>
+              <div class="departs cell"> Departs </div>
+              <div class="arrives cell"> Arrives </div>
+              <div class="nonstop cell"> Nonstop </div>
+            </div>
+            
+            <div *ngFor="let flight of flights" class="flight_results">
+              <div class="flight_number cell"> {{flight.flightNumber}}</div>
+              <div class="departs cell"> {{flight.depart | date : 'shortDate' }}</div>
+              <div class="arrives cell"> {{flight.arrive | date : 'shortDate' }}</div>
+              <div class="nonstop cell"> {{flight.nonstop}}</div>
+            </div>
+          </div>
+          <div *ngIf="flights.length === 0">
+            <p class="notice">{{notice}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
