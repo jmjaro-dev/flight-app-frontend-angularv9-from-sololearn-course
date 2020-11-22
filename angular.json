@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "FlightApp"
+    }
+  },
+  "defaultProject": "FlightApp",
+  "cli": {
+    "analytics": "ab3b0d86-a286-4610-84ae-6c04667238d0"
+  }
 }
